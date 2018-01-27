@@ -10,6 +10,7 @@ public class RadioController : MonoBehaviour {
 	public GameObject turnOnButton;
 	public float startFrequency;
 	public float frequency;
+	public bool on = true;
 
 	void Start () {
 		frequency = startFrequency;	
