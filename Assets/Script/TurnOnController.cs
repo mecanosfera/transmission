@@ -11,6 +11,7 @@ public class TurnOnController : MonoBehaviour {
 	void Start () {
 		spriteR = gameObject.GetComponent<SpriteRenderer>();
 		if(radio.on){
+			Debug.Log(radio.on);
 			spriteR.sprite = turnedOn;
 		} else {
 			spriteR.sprite = turnedOff;
@@ -25,10 +26,10 @@ public class TurnOnController : MonoBehaviour {
 
 	void OnMouseDown(){
 		if(radio.on){
-			radio.on = false;
+			radio.TurnOn(false);	
 			spriteR.sprite = turnedOff;
 		} else {
-			radio.on = true;
+			radio.TurnOn(true);
 			spriteR.sprite = turnedOn;
 		}
 	}

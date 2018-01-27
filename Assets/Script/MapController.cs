@@ -7,8 +7,9 @@ public class MapController : MonoBehaviour {
 	public TargetController selectedTarget;
 	public int targetX;
 	public int targetY;
+	BoxCollider2D box;
 	void Start () {
-		
+		box = gameObject.GetComponent<BoxCollider2D>();
 	}
 	
 	// Update is called once per frame
@@ -30,5 +31,13 @@ public class MapController : MonoBehaviour {
 		} else {
 			Debug.Log("ponto errado!");
 		}
+	}
+
+	void OnMouseOver(){
+		//Debug.Log(box.bounds.size.x*(2 * Camera.main.orthographicSize  / Screen.height));
+	}
+
+	void OnMouseDown(){
+		
 	}
 }
