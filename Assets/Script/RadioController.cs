@@ -8,7 +8,7 @@ public class RadioController : MonoBehaviour {
 	public GameObject pointer;
 	public GameObject tuneButton;
 	public GameObject turnOnButton;
-	public float startFrequency;
+	public float startFrequency = 0f;
 	public float frequency;
 	public bool on = true;
 
@@ -19,6 +19,13 @@ public class RadioController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void ChangeFrequency(float angle){
+		if(angle<=90f || angle>=270f){
+			pointer.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
+		}
+		Debug.Log(angle);
 	}
 
 	

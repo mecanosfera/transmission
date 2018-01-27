@@ -20,6 +20,10 @@ public class MapController : MonoBehaviour {
 		if(selectedTarget!=null){
 			selectedTarget.Select(false);
 		}
+		if(selectedTarget==target){
+			selectedTarget = null;
+			return;
+		}
 		selectedTarget = target;
 		if(target.x==targetX && target.y==targetY){
 			Debug.Log("ponto certo!");

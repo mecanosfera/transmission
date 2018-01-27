@@ -8,9 +8,12 @@ public class TargetController : MonoBehaviour {
 	public int x;
 	public int y;
 	public bool selected = false;
+	public Sprite selectedTarget;
+	public Sprite notSelectedTarget;
+	SpriteRenderer spriteR;
 
 	void Start () {
-		
+		spriteR = gameObject.GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -19,18 +22,22 @@ public class TargetController : MonoBehaviour {
 	}
 
 	public void Select(bool sel){
-		if(sel){
-			selected = true;
-			//mudar sprite
-			map.SelectTarget(this);
-		} else {
-			selected = false;
-			//mudar sprite
-		}
+		
+			if(sel){
+				selected = true;
+				spriteR.sprite = selectedTarget;
+				map.SelectTarget(this);
+			} else {
+				selected = false;
+				spriteR.sprite = notSelectedTarget;
+			}
+		
 	}
 
 	void OnMouseDown(){
-		Select(!selected);
+		if(map.selectedTarget!=this){
+			Select(!selected);
+		}
 	}
 
 
