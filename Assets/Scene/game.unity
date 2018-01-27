@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 564164674}
   - component: {fileID: 564164675}
   - component: {fileID: 564164676}
+  - component: {fileID: 564164677}
   m_Layer: 0
   m_Name: TuneButton
   m_TagString: Untagged
@@ -516,6 +517,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.64
+--- !u!114 &564164677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 564164673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5e03ea5808d4735ad76f6feb44a825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radioController: {fileID: 1409573944}
 --- !u!1 &637562604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1254,8 @@ MonoBehaviour:
   pointer: {fileID: 0}
   tuneButton: {fileID: 0}
   turnOnButton: {fileID: 0}
-  startFrequency: 0
+  startFrequency: 100
+  frequency: 0
 --- !u!212 &1409573945
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class RadioController : MonoBehaviour {
 	public GameObject tuneButton;
 	public GameObject turnOnButton;
 	public float startFrequency;
-	float frequency;
+	public float frequency;
 
 	void Start () {
 		frequency = startFrequency;	

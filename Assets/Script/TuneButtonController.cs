@@ -13,6 +13,20 @@ public class TuneButtonController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(turning){
+			Debug.Log(radioController.frequency);
+		}
+	}
+
+	void OnMouseDown(){
+		turning = true;
+	}
+
+	void OnMouseUp(){
+		turning = false;
+	}
+
+	void OnMouseExit(){
+		turning = false;
 	}
 }
