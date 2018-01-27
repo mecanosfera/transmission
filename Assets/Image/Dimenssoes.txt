@@ -1,0 +1,10 @@
+Tela  1920 : 1080
+
+Receptor morse 1161 : 227 
+Transmissor morse 654 : 239 
+Caderno 971 :765
+calendario 605 : 280
+bloco notas 227: 296
+radio 431 : 476
+relogio 359 : 412
+ 
