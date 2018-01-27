@@ -47,14 +47,14 @@ public class TuneButtonController : MonoBehaviour {
 				transform.LookAt(mouseWorldSpace, upAxis);
 				float angleZ = transform.eulerAngles.z;
 				transform.eulerAngles = new Vector3(0,0,-angleZ);
-			} else if(transform.eulerAngles.z>90f && transform.eulerAngles.z<=200f){ // esquerda
+			} else if(transform.eulerAngles.z>90f && transform.eulerAngles.z<=180f){ // esquerda
 				//Debug.Log("b:"+transform.eulerAngles.z);
 				transform.eulerAngles = new Vector3(0,0,transform.eulerAngles.z-1f);
 				//Debug.Log("a:"+transform.eulerAngles.z);
 			} else if(transform.eulerAngles.z<270f && transform.eulerAngles.z>120f){ //direita
 				transform.eulerAngles = new Vector3(0,0,transform.eulerAngles.z+1f);
 			} else {
-				Debug.Log("???: "+transform.eulerAngles);
+				//Debug.Log("???: "+transform.eulerAngles);
 			}
 			radioController.ChangeFrequency(transform.eulerAngles.z);
 			//Debug.Log("eu: "+transform.eulerAngles);

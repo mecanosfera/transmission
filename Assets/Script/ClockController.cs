@@ -10,6 +10,7 @@ public class ClockController : MonoBehaviour {
 	public GameObject pointerMinute;
 	public GameObject pointerSecond;
 	public GameObject dayPeriod;
+	public RadioController radio;
 
 	public float hour;
 	public float minute;
@@ -19,7 +20,7 @@ public class ClockController : MonoBehaviour {
 	private const float hoursToDegrees = 360f / 12f;
     private const float minutesToDegrees = 360f / 60f;
     private const float secondsToDegrees = 360f / 60f;
-	
+	public static float totalTime = 0;	
 
 
 
@@ -32,9 +33,12 @@ public class ClockController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if(ClockController.timeJump){
 			SetTime(10);
+			totalTime += 10;
 		} else {
+			totalTime += Time.deltaTime;
 			SetTime(Time.deltaTime);
 		}
 		
@@ -62,11 +66,17 @@ public class ClockController : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		ClockController.timeJump = true;	
+		ClockController.timeJump = true;
+		if(radio.on){
+			radio.Stop();
+		}	
 	}
 
 	void OnMouseUp(){
 		ClockController.timeJump = false;
+		if(radio.on){
+			radio.Play();
+		}
 	}
 
 	void OnMouseOver(){
@@ -75,6 +85,9 @@ public class ClockController : MonoBehaviour {
 
 	void OnMouseExit(){
 		ClockController.timeJump = false;
+		if(radio.on){
+			radio.Play();
+		}
 	}
 
 	
