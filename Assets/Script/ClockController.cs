@@ -35,7 +35,9 @@ public class ClockController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(hour==4 && minute==30){
+			ClockController.timeJump = false;
+		}
 		if(ClockController.timeJump){
 			SetTime(10);
 			totalTime += 10;
@@ -69,15 +71,17 @@ public class ClockController : MonoBehaviour {
 
 	void OnMouseDown(){
 		if(!radio.messageStation.messagePlaying){
-			
+			ClockController.timeJump = true;
+			if(radio.on){
+				radio.Stop();
+			}
 		}
-		ClockController.timeJump = true;
-		if(radio.on){
-			radio.Stop();
-		}	
 	}
 
 	void OnMouseUp(){
+		if(!ClockController.timeJump){
+			//return;
+		}
 		ClockController.timeJump = false;
 		if(radio.on){
 			radio.Play();
@@ -89,6 +93,9 @@ public class ClockController : MonoBehaviour {
 	}
 
 	void OnMouseExit(){
+		if(!ClockController.timeJump){
+			return;
+		}
 		ClockController.timeJump = false;
 		if(radio.on){
 			radio.Play();

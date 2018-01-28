@@ -27,23 +27,71 @@ public class StationController : MonoBehaviour {
 			loopTime += audio.length;
 		}
 	}
+	public bool Message(bool jump = true){
+		if(message!=null && !messageEnd){
+			//Debug.Log("1");
+			
+			if(!messagePlaying && ClockController.instance.hour==4 && ClockController.instance.minute==30){
+				messagePlaying = true;
+				//Debug.Log("2");
+			}
+			if(messagePlaying){
+				//Debug.Log("3");
+				float passedTime = 0f;
+				passedTime = ((ClockController.instance.minute-30)*12) + ClockController.instance.second/5;
+				if(passedTime>=message.length){
+					//Debug.Log("4");
+					messageEnd = true;
+					messageTime = message.length*5;
+					messagePlaying = false;
+					RadioController.allowMap = true;
+					audioIndex = 2;
+					return false;
+				}
+				if(playing){
+					//Debug.Log("5");
+					if(currentAudio.clip!=message){
+						currentAudio.Stop();
+						currentAudio.clip = message;
+					}
+					
+					if(!currentAudio.isPlaying){
+						Debug.Log("plaaaaaay "+currentAudio.time);
+						currentAudio.time = passedTime;
+						currentAudio.Play();
+					}	
+				}
+				return true;
+				
+			}
+			return false;
+
+		}
+
+
+		return false;
+	}
+
+
 	
-	public bool Message(bool cont, bool play=true){
+	public bool Message2(bool cont, bool play=true){
 		if(message!=null && !messageEnd){
 			if(ClockController.instance.hour>=messageHour &&
 					ClockController.instance.minute>=messageMinute && 
 					ClockController.instance.second>=messageSecond
 				){	
 					float passedTime = 0f;
-					if(ClockController.instance.hour>messageHour){
-						passedTime += 3600;
-					}
-					if(ClockController.instance.minute>messageMinute){
-						passedTime += ((ClockController.instance.minute-messageMinute)/5)*60;
+					if(ClockController.instance.hour>messageHour || ClockController.instance.minute>messageMinute){
+						RadioController.allowMap = true;
+						messagePlaying = false;
+						messageEnd = true;
+						messageTime = message.length*5;
+						return false;
 					}
 					if(ClockController.instance.second>messageSecond){
-						passedTime += ((ClockController.instance.second-messageSecond)/5);
+						passedTime += ((ClockController.instance.second-messageSecond*5)/5);
 					}
+					
 					if(passedTime<message.length){
 						if(playing){
 							if(currentAudio.clip!=message){
@@ -51,10 +99,11 @@ public class StationController : MonoBehaviour {
 								currentAudio.clip = message;
 							}
 							if(cont){
+								Debug.Log(passedTime);
 								currentAudio.time = passedTime;
 							}
 							if(!currentAudio.isPlaying){
-								Debug.Log("plaaaaaay");
+								Debug.Log("plaaaaaay "+currentAudio.time);
 								currentAudio.Play();
 							}	
 						}
@@ -81,15 +130,17 @@ public class StationController : MonoBehaviour {
 		if(playing){
 			Message(false); 
 			if(!currentAudio.isPlaying){
-				if(messagePlaying){
+				/*if(messagePlaying){
 					Debug.Log("end");
 					messageEnd = true;
 					messagePlaying = false;
 					Stop();
 					Play(false);
 					return;
-				}
+				}*/
+				
 				audioIndex++;
+				Debug.Log(audioIndex);
 				if(audioIndex>=schedule.Length){
 					audioIndex = 0;
 				}
@@ -106,7 +157,7 @@ public class StationController : MonoBehaviour {
 		//if(message==null){
 		playing = true;
 		if(msg){
-			if(Message(true)){
+			if(Message()){
 				return;
 			}
 		}

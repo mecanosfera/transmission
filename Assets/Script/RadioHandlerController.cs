@@ -19,7 +19,10 @@ public class RadioHandlerController : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		turning = true;
+		if(!RadioController.instance.messageStation.messagePlaying || 
+		(RadioController.instance.messageStation.messagePlaying && RadioController.instance.messageStation != RadioController.instance.currentStation) ){
+			turning = true;
+		}
 	}
 
 	void OnMouseUp(){

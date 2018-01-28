@@ -7,8 +7,7 @@ public class MorseReceiverController : MonoBehaviour {
 
 	public GameObject message;
 	public Text messageText;
-	public GameObject morseSender;
-	public SpriteRenderer morseSenderRenderer;
+	public GameObject morseSenderButton;
 	public float sendTimer = 5f;
 	public bool sending = false;
 	public float receiveTimer = 5f;
@@ -16,11 +15,21 @@ public class MorseReceiverController : MonoBehaviour {
 	public string sendMsg;
 	public float clearTimer = 5f;
 	bool cleaning = false;
-	string notepadMsg;
+	public Sprite notepadMsg;
+	public GameObject notepad;
+	public SpriteRenderer notepadR;
+	bool sendNotepad = false;
+	float sendPos = 0.25f;
+	Vector3 sendStartPos;
+	float animTimer = 0f;
+	float messageStart;
 
 	void Start () {
-		morseSenderRenderer = morseSender.GetComponent<SpriteRenderer>();
-		ReceiveMessage("Escute a rádio de música às 4:30 pm");
+		notepadR = notepad.GetComponent<SpriteRenderer>();
+		messageStart = message.transform.position.x;
+		sendStartPos = morseSenderButton.transform.position;
+		ReceiveMessage("Escute a rádio de música às 4:30 pm", true);
+		
 	}
 	
 	// Update is called once per frame
@@ -33,16 +42,27 @@ public class MorseReceiverController : MonoBehaviour {
 				receiving = false;
 				receiveTimer = 5f;
 				cleaning = true;
-				if(notepadMsg!=null){
-					
+				if(sendNotepad){
+					notepadR.sprite = notepadMsg;
+					sendNotepad = false;
 				}
 			}
 		}
 		if(sending){
 			sendTimer -= Time.deltaTime;
+			animTimer += Time.deltaTime;
+			if(animTimer>0.5f){
+				sendPos *= -1;
+				morseSenderButton.transform.position += new Vector3(sendPos,0,0);
+				animTimer = 0f;
+			}
+			
 			if(sendTimer<=0f){
 				sending = false;
 				sendTimer = 5f;
+				morseSenderButton.transform.position = sendStartPos;
+				sendPos = 0.25f;
+				animTimer = 0f;
 				ReceiveMessage(sendMsg);
 			}
 		}
@@ -51,7 +71,7 @@ public class MorseReceiverController : MonoBehaviour {
 			if(clearTimer<=0f){
 				cleaning = false;
 				clearTimer = 5f;
-				message.transform.position += new Vector3(5f,0,0);
+				message.transform.position = new Vector3(messageStart,message.transform.position.y,message.transform.position.z);
 			}
 		}
 	}
@@ -61,9 +81,11 @@ public class MorseReceiverController : MonoBehaviour {
 		sendMsg = msg;
 	}
 
-	public void ReceiveMessage(string msg, string notepad=null){
+	public void ReceiveMessage(string msg, bool note=false){
+		cleaning = false;
+		message.transform.position = new Vector3(messageStart,message.transform.position.y,message.transform.position.z);
 		messageText.text = msg;
-		notepadMsg = notepad;
+		sendNotepad = note;
 		receiving = true;
 	}
 }
