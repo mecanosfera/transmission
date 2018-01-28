@@ -40,7 +40,7 @@ public class StationController : MonoBehaviour {
 				float passedTime = 0f;
 				passedTime = ((ClockController.instance.minute-30)*12) + ClockController.instance.second/5;
 				if(passedTime>=message.length){
-					//Debug.Log("4");
+					Debug.Log("zzzzzzzzzzzzz");
 					messageEnd = true;
 					messageTime = message.length*5;
 					messagePlaying = false;
@@ -56,7 +56,7 @@ public class StationController : MonoBehaviour {
 					}
 					
 					if(!currentAudio.isPlaying){
-						Debug.Log("plaaaaaay "+currentAudio.time);
+						Debug.Log("plaaaaaay ");
 						currentAudio.time = passedTime;
 						currentAudio.Play();
 					}	
@@ -145,7 +145,7 @@ public class StationController : MonoBehaviour {
 					audioIndex = 0;
 				}
 				currentAudio.clip = schedule[audioIndex];
-				Debug.Log("play2");
+				Debug.Log("play|||");
 				currentAudio.Play();
 			}
 			
@@ -153,7 +153,7 @@ public class StationController : MonoBehaviour {
 	}
 
 	public void Play(bool msg = true){
-		Debug.Log("play");
+		Debug.Log("play: "+audioIndex);
 		//if(message==null){
 		playing = true;
 		if(msg){
@@ -174,7 +174,8 @@ public class StationController : MonoBehaviour {
 				//Debug.Log("actual: "+actualTime);
 				currentAudio.Stop();
 				currentAudio.clip = audio;
-				currentAudio.time = actualTime;					
+				currentAudio.time = actualTime;	
+				Debug.Log("ppp: "+audioIndex);				
 				currentAudio.Play();
 				return;
 			}

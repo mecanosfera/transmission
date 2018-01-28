@@ -10,11 +10,9 @@ public class MapController : MonoBehaviour {
 	public int targetY;
 	public bool secondMsg = false;
 	public MorseReceiverController morse;
-	BoxCollider2D box;
 	public Text coords;
 
 	void Start () {
-		box = gameObject.GetComponent<BoxCollider2D>();
 		coords.text = "";
 	}
 	
