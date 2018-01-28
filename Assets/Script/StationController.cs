@@ -130,14 +130,12 @@ public class StationController : MonoBehaviour {
 		if(playing){
 			Message(false); 
 			if(!currentAudio.isPlaying){
-				/*if(messagePlaying){
-					Debug.Log("end");
+				if(messagePlaying){
 					messageEnd = true;
 					messagePlaying = false;
-					Stop();
-					Play(false);
-					return;
-				}*/
+					messageTime = message.length*5;
+					audioIndex = 2;
+				}
 				
 				audioIndex++;
 				Debug.Log(audioIndex);
@@ -170,8 +168,8 @@ public class StationController : MonoBehaviour {
 		for(int i=0;i<schedule.Length;i++){
 			AudioClip audio = schedule[i];
 			audioIndex = i;
-			if(actualTime<audio.length){
-				//Debug.Log("actual: "+actualTime);
+			if(actualTime<=audio.length){
+				Debug.Log("actual: "+actualTime);
 				currentAudio.Stop();
 				currentAudio.clip = audio;
 				currentAudio.time = actualTime;	

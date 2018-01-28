@@ -51,13 +51,8 @@ public class RadioController : MonoBehaviour {
 			} else {
 				if(frequency>=station.frequency-5 && frequency<=station.frequency+5){
 					currentStation.currentAudio.volume = 1;
-					noiseSource.Stop();
-					noiseSource.volume = 1;
+					noiseSource.volume = 0.1f;
 				} else {
-					if(!noiseSource.isPlaying){
-						noiseSource.Play();
-					}
-					
 					noiseSource.volume = (Mathf.Abs(frequency-station.frequency)/100)*3;
 					currentStation.currentAudio.volume += Mathf.Abs(frequency-station.frequency)/150; 
 				}

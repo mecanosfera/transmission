@@ -711,7 +711,7 @@ Prefab:
     - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
         type: 2}
       propertyPath: schedule.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4662921203410398, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -754,12 +754,12 @@ Prefab:
         type: 2}
       propertyPath: schedule.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: cc8228a92073d48eebf80e02e6b8c866, type: 3}
+      objectReference: {fileID: 8300000, guid: 4b164934fae3648b9a5e73e222a88c24, type: 3}
     - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
         type: 2}
       propertyPath: schedule.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: ae133b41dab5b4acd8d7a8b3d56a8e51, type: 3}
+      objectReference: {fileID: 8300000, guid: cc8228a92073d48eebf80e02e6b8c866, type: 3}
     - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
         type: 2}
       propertyPath: schedule.Array.data[3]
@@ -788,6 +788,11 @@ Prefab:
       propertyPath: schedule.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 6b14a4bb3bd60484abfe9d8f955f9e4e, type: 3}
+    - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
+        type: 2}
+      propertyPath: message
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 82776518653240082, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
@@ -2400,7 +2405,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2530,7 +2535,7 @@ Prefab:
         type: 2}
       propertyPath: schedule.Array.data[3]
       value: 
-      objectReference: {fileID: 8300000, guid: 0f74762d5d3474cafb4edef37a8ae971, type: 3}
+      objectReference: {fileID: 8300000, guid: ab657438253365c47ad443f495e0f6d8, type: 3}
     - target: {fileID: 1106231303843058, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
       propertyPath: m_TagString
       value: RadioStation
@@ -2583,7 +2588,7 @@ Prefab:
         type: 2}
       propertyPath: schedule.Array.data[6]
       value: 
-      objectReference: {fileID: 8300000, guid: ab657438253365c47ad443f495e0f6d8, type: 3}
+      objectReference: {fileID: 8300000, guid: 4a468bcbbf5d98c46be68106f02a0dce, type: 3}
     m_RemovedComponents:
     - {fileID: 82776518653240082, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
