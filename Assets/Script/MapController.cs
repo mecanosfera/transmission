@@ -22,7 +22,7 @@ public class MapController : MonoBehaviour {
 	void Update () {
 		if(selectedTarget==null && !secondMsg){
 			if(ClockController.instance.hour==5 && ClockController.instance.minute>=30){
-				morse.ReceiveMessage("marque o lugar no mapa!!!");
+				morse.ReceiveMessage("Agente, ainda não recemos nenhuma informação. Precisamos da localização com urgência!");
 				secondMsg = true;
 			}
 		}
@@ -35,9 +35,9 @@ public class MapController : MonoBehaviour {
 		}
 		selectedTarget = target;
 		if(target.x==targetX && target.y==targetY){
-			morse.SendMsg("Acertou!");
+			morse.SendMsg("Acreditamos que esse seja a possível localização de uma célula terrorista. Bom trabalho. Aguarde novas instruções.");
 		} else {
-			morse.SendMsg("Todo mundo morreu por culpa sua...");
+			morse.SendMsg("Os agentes enviados a campo não encontraram nada no local informado. Uma nova falha não será tolerada. Fique atento, agente. Você está dispensado por hoje.");
 		}
 	}
 
