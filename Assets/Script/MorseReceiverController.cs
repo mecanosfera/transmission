@@ -28,7 +28,7 @@ public class MorseReceiverController : MonoBehaviour {
 		notepadR = notepad.GetComponent<SpriteRenderer>();
 		messageStart = message.transform.position.x;
 		sendStartPos = morseSenderButton.transform.position;
-		ReceiveMessage("Escute a rádio de música às 4:30 pm", true);
+		ReceiveMessage("Agente, nossos espiões descobriram que uma mensagem oculta será transmitida às 16:30 hrs em pleno programa de músicas na rádio local, frequência 102.6 MHz", true);
 		
 	}
 	
@@ -37,7 +37,7 @@ public class MorseReceiverController : MonoBehaviour {
 		if(receiving){
 			//Debug.Log("receive":+receiveTimer);
 			receiveTimer -= Time.deltaTime;
-			message.transform.position -= new Vector3(Time.deltaTime,0,0);
+			message.transform.position -= new Vector3(Time.deltaTime*1.4f,0,0);
 			if(receiveTimer<=0f){
 				receiving = false;
 				receiveTimer = 5f;
