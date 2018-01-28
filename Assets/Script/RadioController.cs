@@ -15,6 +15,7 @@ public class RadioController : MonoBehaviour {
 	public StationController[] stations;
 	public StationController currentStation;
 	public AudioSource noiseSource;
+	public static bool allowMap = false;
 	
 
 	void Start () {

@@ -7,6 +7,7 @@ public class MapController : MonoBehaviour {
 	public TargetController selectedTarget;
 	public int targetX;
 	public int targetY;
+	public MorseReceiverController morse;
 	BoxCollider2D box;
 	void Start () {
 		box = gameObject.GetComponent<BoxCollider2D>();
@@ -18,26 +19,16 @@ public class MapController : MonoBehaviour {
 	}
 
 	public void SelectTarget(TargetController target){
-		if(selectedTarget!=null){
-			selectedTarget.Select(false);
-		}
 		if(selectedTarget==target){
 			selectedTarget = null;
 			return;
 		}
 		selectedTarget = target;
 		if(target.x==targetX && target.y==targetY){
-			Debug.Log("ponto certo!");
+			morse.SendMsg("Acertou!");
 		} else {
-			Debug.Log("ponto errado!");
+			morse.SendMsg("Todo mundo morreu por culpa sua...");
 		}
 	}
 
-	void OnMouseOver(){
-		//Debug.Log(box.bounds.size.x*(2 * Camera.main.orthographicSize  / Screen.height));
-	}
-
-	void OnMouseDown(){
-		
-	}
 }

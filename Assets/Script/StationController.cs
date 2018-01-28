@@ -11,12 +11,13 @@ public class StationController : MonoBehaviour {
 	public string stationName;
 	public float frequency;
 	int audioIndex = 0;
-	float messageHour;
-	float messageMinute;
-	float messageSecond;
+	public float messageHour;
+	public float messageMinute;
+	public float messageSecond;
 	float loopTime = 0f;
 	public bool playing = false;
 	public float messageTime = 0f;
+	
 
 	void Start () {
 		currentAudio = gameObject.GetComponent<AudioSource>();
@@ -34,6 +35,7 @@ public class StationController : MonoBehaviour {
 					ClockController.instance.second>=messageSecond
 				){
 					messageTime = message.length*5;
+					RadioController.allowMap = true;
 					float passedTime = 0f;
 					if(ClockController.instance.hour>messageHour){
 						passedTime += 3600;
@@ -50,6 +52,7 @@ public class StationController : MonoBehaviour {
 						currentAudio.time = passedTime;
 						currentAudio.Play();
 						message = null;
+						
 					}
 				}
 			} 
@@ -66,7 +69,7 @@ public class StationController : MonoBehaviour {
 	}
 
 	public void Play(){
-		if(message==null){
+		//if(message==null){
 			float actualTime = ClockController.totalTime-messageTime;
 			float musicTime = 0f;
 			//Debug.Log("loop:"+loopTime);
@@ -88,13 +91,12 @@ public class StationController : MonoBehaviour {
 				
 			}
 			
-		}
+		//}
 	}
 
 	public void Stop(){
-		if(message==null){
 			currentAudio.Stop();
 			playing = false;
-		}
+		
 	}
 }

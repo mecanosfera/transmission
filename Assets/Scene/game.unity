@@ -249,7 +249,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 171045833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08800125, y: -0.34000015, z: 0}
+  m_LocalPosition: {x: -1.6699982, y: -0.2649994, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1239499524}
@@ -257,8 +257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 49.912, y: -50.34}
-  m_SizeDelta: {x: 101.613, y: 9.69}
+  m_AnchoredPosition: {x: 48.33, y: -50.265}
+  m_SizeDelta: {x: 59.623, y: 8.199}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &171045835
 MonoBehaviour:
@@ -517,7 +517,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 987fcb36e4d9446c48934bf0f405bdc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -779,6 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 637562606}
   - component: {fileID: 637562605}
+  - component: {fileID: 637562607}
   m_Layer: 0
   m_Name: MorseReceiver
   m_TagString: Untagged
@@ -844,6 +845,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &637562607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 637562604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e9a7d9bb847458d8374a7f048cc9de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: {fileID: 2119066505}
+  messageText: {fileID: 171045835}
+  morseSender: {fileID: 1267967309}
+  morseSenderRenderer: {fileID: 0}
+  sendTimer: 5
+  sending: 0
+  receiveTimer: 10
+  receiving: 0
+  sendMsg: 
+  clearTimer: 10
 --- !u!1001 &825500482
 Prefab:
   m_ObjectHideFlags: 0
@@ -1385,7 +1407,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1267967309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.73, y: 3.95, z: 0}
+  m_LocalPosition: {x: 5.53, y: 3.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1526,7 +1548,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 06ff54fdc8064429d9ae6496f1d57f44, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1704,13 +1726,14 @@ MonoBehaviour:
   selectedTarget: {fileID: 0}
   targetX: 10
   targetY: 10
+  morse: {fileID: 637562607}
 --- !u!61 &1353884124
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1353884120}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1992,6 +2015,21 @@ Prefab:
       propertyPath: m_Name
       value: StationMusica
       objectReference: {fileID: 0}
+    - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
+        type: 2}
+      propertyPath: message
+      value: 
+      objectReference: {fileID: 8300000, guid: f218840d881d445668b6e4769de3a741, type: 3}
+    - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
+        type: 2}
+      propertyPath: messageHour
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
+        type: 2}
+      propertyPath: messageMinute
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 82776518653240082, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
@@ -2088,7 +2126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 7e7c71abcf3a64693b5f24db63c6c84f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2161,7 +2199,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 05fdaf9c6a0044a0db6d1eb512f5fb86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2780,7 +2818,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2119066505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: 0, z: 0}
+  m_LocalPosition: {x: 10.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 545400993}

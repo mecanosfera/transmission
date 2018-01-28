@@ -27,16 +27,14 @@ public class TargetController : MonoBehaviour {
 				selected = true;
 				spriteR.sprite = selectedTarget;
 				map.SelectTarget(this);
-			} else {
-				selected = false;
-				spriteR.sprite = notSelectedTarget;
 			}
 		
 	}
 
 	void OnMouseDown(){
-		if(map.selectedTarget!=this){
-			Select(!selected);
+		if(RadioController.allowMap){
+			Select(true);
+			RadioController.allowMap = false;
 		}
 	}
 
