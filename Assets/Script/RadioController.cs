@@ -16,6 +16,9 @@ public class RadioController : MonoBehaviour {
 	public StationController currentStation;
 	public AudioSource noiseSource;
 	public static bool allowMap = false;
+	public static AudioClip message;
+	public static bool transmitedMessage = false;
+	public StationController messageStation;
 	
 
 	void Start () {
@@ -34,7 +37,7 @@ public class RadioController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		messageStation.Message(false,false);
 	}
 
 	public bool ChangeStation(StationController station){
@@ -56,7 +59,6 @@ public class RadioController : MonoBehaviour {
 					
 					noiseSource.volume = (Mathf.Abs(frequency-station.frequency)/100)*3;
 					currentStation.currentAudio.volume += Mathf.Abs(frequency-station.frequency)/150; 
-					Debug.Log(noiseSource.volume);
 				}
 			}
 			return true;

@@ -17,6 +17,8 @@ public class StationController : MonoBehaviour {
 	float loopTime = 0f;
 	public bool playing = false;
 	public float messageTime = 0f;
+	public bool messageEnd = false;
+	public bool messagePlaying = false;
 	
 
 	void Start () {
@@ -26,16 +28,12 @@ public class StationController : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if(playing){
-			if(message!=null && messageTime==0f){
-				if(ClockController.instance.hour>=messageHour &&
+	public bool Message(bool cont, bool play=true){
+		if(message!=null && !messageEnd){
+			if(ClockController.instance.hour>=messageHour &&
 					ClockController.instance.minute>=messageMinute && 
 					ClockController.instance.second>=messageSecond
-				){
-					messageTime = message.length*5;
-					RadioController.allowMap = true;
+				){	
 					float passedTime = 0f;
 					if(ClockController.instance.hour>messageHour){
 						passedTime += 3600;
@@ -47,56 +45,97 @@ public class StationController : MonoBehaviour {
 						passedTime += ((ClockController.instance.second-messageSecond)/5);
 					}
 					if(passedTime<message.length){
-						currentAudio.Stop();
-						currentAudio.clip = message;
-						currentAudio.time = passedTime;
-						currentAudio.Play();
-						message = null;
-						
+						if(playing){
+							if(currentAudio.clip!=message){
+								currentAudio.Stop();
+								currentAudio.clip = message;
+							}
+							if(cont){
+								currentAudio.time = passedTime;
+							}
+							if(!currentAudio.isPlaying){
+								Debug.Log("plaaaaaay");
+								currentAudio.Play();
+							}	
+						}
+						messagePlaying = true;
+						return true;
+					} else {
+						Debug.Log("end____");
+						RadioController.allowMap = true;
+						messagePlaying = false;
+						messageEnd = true;
+						messageTime = message.length*5;
+						if(play){
+							Stop();
+							Play();
+						}
+						return false;
 					}
 				}
-			} 
+		}
+		return false;
+	}
+	// Update is called once per frame
+	void Update () {
+		if(playing){
+			Message(false); 
 			if(!currentAudio.isPlaying){
+				if(messagePlaying){
+					Debug.Log("end");
+					messageEnd = true;
+					messagePlaying = false;
+					Stop();
+					Play(false);
+					return;
+				}
 				audioIndex++;
 				if(audioIndex>=schedule.Length){
 					audioIndex = 0;
 				}
 				currentAudio.clip = schedule[audioIndex];
+				Debug.Log("play2");
 				currentAudio.Play();
 			}
 			
 		}
 	}
 
-	public void Play(){
+	public void Play(bool msg = true){
+		Debug.Log("play");
 		//if(message==null){
-			float actualTime = ClockController.totalTime-messageTime;
-			float musicTime = 0f;
-			//Debug.Log("loop:"+loopTime);
-			if(ClockController.totalTime-messageTime>(loopTime*5)){
-				actualTime = (ClockController.totalTime-messageTime)%(loopTime*5);
+		playing = true;
+		if(msg){
+			if(Message(true)){
+				return;
 			}
-			audioIndex = 0;
-			foreach(AudioClip audio in schedule){
-				musicTime += audio.length*5;
-				audioIndex++;
-				if((actualTime<=musicTime)){
-					currentAudio.Stop();
-					currentAudio.clip = audio;
-					currentAudio.time = (musicTime-actualTime)/5;					
-					currentAudio.Play();
-					playing = true;
-					return;
-				}
-				
+		}
+		float actualTime = (ClockController.totalTime-messageTime)/5;
+		//Debug.Log("loop:"+loopTime);
+		if(ClockController.totalTime-messageTime>(loopTime*5)){
+			actualTime = ((ClockController.totalTime-messageTime)%(loopTime*5))/5;
+		}
+		//Debug.Log("actual:"+actualTime);
+		for(int i=0;i<schedule.Length;i++){
+			AudioClip audio = schedule[i];
+			audioIndex = i;
+			if(actualTime<audio.length){
+				//Debug.Log("actual: "+actualTime);
+				currentAudio.Stop();
+				currentAudio.clip = audio;
+				currentAudio.time = actualTime;					
+				currentAudio.Play();
+				return;
 			}
-			
+			actualTime -= audio.length;
+
+		}	
 		//}
 	}
 
 	public void Stop(){
-			currentAudio.Stop();
-			playing = false;
+		currentAudio.Stop();
+		playing = false;
 		
 	}
 }

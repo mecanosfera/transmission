@@ -249,7 +249,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 171045833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06747246, y: -0.2450211, z: 0}
+  m_LocalPosition: {x: 0.000054359436, y: -0.12502098, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1239499524}
@@ -257,7 +257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.47667474, y: 0.5045498}
   m_AnchorMax: {x: 0.47667474, y: 0.5045498}
-  m_AnchoredPosition: {x: 2.4, y: -0.7}
+  m_AnchoredPosition: {x: 2.3325815, y: -0.58}
   m_SizeDelta: {x: 28.413002, y: 6.717}
   m_Pivot: {x: 0.5, y: 0.50000006}
 --- !u!114 &171045835
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -862,10 +862,10 @@ MonoBehaviour:
   morseSenderRenderer: {fileID: 0}
   sendTimer: 5
   sending: 0
-  receiveTimer: 10
+  receiveTimer: 5
   receiving: 0
   sendMsg: 
-  clearTimer: 10
+  clearTimer: 5
 --- !u!1001 &825500482
 Prefab:
   m_ObjectHideFlags: 0
@@ -1157,8 +1157,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 907995062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.24, y: -1.725, z: 0}
-  m_LocalScale: {x: 1, y: 0.9500408, z: 1}
+  m_LocalPosition: {x: -1.2363, y: -1.7287, z: 0}
+  m_LocalScale: {x: 1.1048172, y: 0.9350662, z: 1}
   m_Children: []
   m_Father: {fileID: 1409573946}
   m_RootOrder: 2
@@ -1725,6 +1725,7 @@ MonoBehaviour:
   selectedTarget: {fileID: 0}
   targetX: 10
   targetY: 10
+  secondMsg: 0
   morse: {fileID: 637562607}
 --- !u!61 &1353884124
 BoxCollider2D:
@@ -1791,6 +1792,7 @@ MonoBehaviour:
   stations: []
   currentStation: {fileID: 0}
   noiseSource: {fileID: 0}
+  messageStation: {fileID: 1934493937}
 --- !u!212 &1409573945
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1980,7 +1982,7 @@ Prefab:
         type: 2}
       propertyPath: schedule.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 0f74762d5d3474cafb4edef37a8ae971, type: 3}
+      objectReference: {fileID: 8300000, guid: f89e3309127dc44e092fd57d8e540493, type: 3}
     - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
         type: 2}
       propertyPath: schedule.Array.data[1]
@@ -1990,12 +1992,12 @@ Prefab:
         type: 2}
       propertyPath: schedule.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: a2b53e1ee186a4d4ead86627615cb37d, type: 3}
+      objectReference: {fileID: 8300000, guid: 0f74762d5d3474cafb4edef37a8ae971, type: 3}
     - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
         type: 2}
       propertyPath: schedule.Array.data[3]
       value: 
-      objectReference: {fileID: 8300000, guid: f89e3309127dc44e092fd57d8e540493, type: 3}
+      objectReference: {fileID: 8300000, guid: a2b53e1ee186a4d4ead86627615cb37d, type: 3}
     - target: {fileID: 1106231303843058, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
       propertyPath: m_TagString
       value: RadioStation
@@ -2508,6 +2510,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1934493937 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1475540913}
+  m_Script: {fileID: 11500000, guid: ed60816571f864f4bbfee58dff5e53e4, type: 3}
 --- !u!1001 &1983449292
 Prefab:
   m_ObjectHideFlags: 0
