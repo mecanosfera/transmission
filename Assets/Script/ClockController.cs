@@ -21,6 +21,7 @@ public class ClockController : MonoBehaviour {
     private const float minutesToDegrees = 360f / 60f;
     private const float secondsToDegrees = 360f / 60f;
 	public static float totalTime = 0;	
+	public static ClockController instance;
 
 
 
@@ -28,6 +29,7 @@ public class ClockController : MonoBehaviour {
 		hour = 4f;
 		minute = 20f;
 		second = 0f;
+		instance = this;
 		//pointerHour.transform.
 	}
 	
@@ -38,8 +40,8 @@ public class ClockController : MonoBehaviour {
 			SetTime(10);
 			totalTime += 10;
 		} else {
-			totalTime += Time.deltaTime;
-			SetTime(Time.deltaTime);
+			totalTime += Time.deltaTime*5;
+			SetTime(Time.deltaTime*5);
 		}
 		
 		

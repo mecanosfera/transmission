@@ -854,7 +854,7 @@ Prefab:
     - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
         type: 2}
       propertyPath: schedule.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4662921203410398, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -892,22 +892,22 @@ Prefab:
         type: 2}
       propertyPath: schedule.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 0f74762d5d3474cafb4edef37a8ae971, type: 3}
+      objectReference: {fileID: 8300000, guid: ea5cfdb1adb734e848a3047c1920ee88, type: 3}
     - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
         type: 2}
       propertyPath: schedule.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: ce176b2fadc2e4fd68a5bd003e1843c8, type: 3}
+      objectReference: {fileID: 8300000, guid: cc8228a92073d48eebf80e02e6b8c866, type: 3}
     - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
         type: 2}
       propertyPath: schedule.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: a2b53e1ee186a4d4ead86627615cb37d, type: 3}
+      objectReference: {fileID: 8300000, guid: ae133b41dab5b4acd8d7a8b3d56a8e51, type: 3}
     - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
         type: 2}
       propertyPath: schedule.Array.data[3]
       value: 
-      objectReference: {fileID: 8300000, guid: f89e3309127dc44e092fd57d8e540493, type: 3}
+      objectReference: {fileID: 8300000, guid: ba670c8d04e734476bdc06d0a2be5102, type: 3}
     - target: {fileID: 1106231303843058, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
       propertyPath: m_TagString
       value: RadioStation
@@ -926,6 +926,11 @@ Prefab:
       propertyPath: m_Name
       value: StationComercial
       objectReference: {fileID: 0}
+    - target: {fileID: 114168614079575402, guid: c2cec09bd285d4482b427b93d143ad0d,
+        type: 2}
+      propertyPath: schedule.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b14a4bb3bd60484abfe9d8f955f9e4e, type: 3}
     m_RemovedComponents:
     - {fileID: 82776518653240082, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c2cec09bd285d4482b427b93d143ad0d, type: 2}

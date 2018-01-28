@@ -16,6 +16,7 @@ public class StationController : MonoBehaviour {
 	float messageSecond;
 	float loopTime = 0f;
 	public bool playing = false;
+	public float messageTime = 0f;
 
 	void Start () {
 		currentAudio = gameObject.GetComponent<AudioSource>();
@@ -26,33 +27,62 @@ public class StationController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(message!=null){
-
-		} else {
-
+		if(playing){
+			if(message!=null && messageTime==0f){
+				if(ClockController.instance.hour>=messageHour &&
+					ClockController.instance.minute>=messageMinute && 
+					ClockController.instance.second>=messageSecond
+				){
+					messageTime = message.length*5;
+					float passedTime = 0f;
+					if(ClockController.instance.hour>messageHour){
+						passedTime += 3600;
+					}
+					if(ClockController.instance.minute>messageMinute){
+						passedTime += ((ClockController.instance.minute-messageMinute)/5)*60;
+					}
+					if(ClockController.instance.second>messageSecond){
+						passedTime += ((ClockController.instance.second-messageSecond)/5);
+					}
+					if(passedTime<message.length){
+						currentAudio.Stop();
+						currentAudio.clip = message;
+						currentAudio.time = passedTime;
+						currentAudio.Play();
+						message = null;
+					}
+				}
+			} 
+			if(!currentAudio.isPlaying){
+				audioIndex++;
+				if(audioIndex>=schedule.Length){
+					audioIndex = 0;
+				}
+				currentAudio.clip = schedule[audioIndex];
+				currentAudio.Play();
+			}
+			
 		}
 	}
 
 	public void Play(){
 		if(message==null){
-			float actualTime = ClockController.totalTime;
+			float actualTime = ClockController.totalTime-messageTime;
 			float musicTime = 0f;
 			//Debug.Log("loop:"+loopTime);
-			if(ClockController.totalTime>loopTime){
-				actualTime = ClockController.totalTime%loopTime;
-				Debug.Log("actual: "+actualTime);
+			if(ClockController.totalTime-messageTime>(loopTime*5)){
+				actualTime = (ClockController.totalTime-messageTime)%(loopTime*5);
 			}
 			audioIndex = 0;
 			foreach(AudioClip audio in schedule){
-				musicTime += audio.length;
-				Debug.Log("audo len "+audio.length);
+				musicTime += audio.length*5;
 				audioIndex++;
-				if(actualTime<=musicTime){
-					Debug.Log(musicTime+" "+actualTime);
+				if((actualTime<=musicTime)){
 					currentAudio.Stop();
 					currentAudio.clip = audio;
-					currentAudio.time = musicTime-actualTime;					
+					currentAudio.time = (musicTime-actualTime)/5;					
 					currentAudio.Play();
+					playing = true;
 					return;
 				}
 				
@@ -64,6 +94,7 @@ public class StationController : MonoBehaviour {
 	public void Stop(){
 		if(message==null){
 			currentAudio.Stop();
+			playing = false;
 		}
 	}
 }
