@@ -7,6 +7,7 @@ public class MorseReceiverController : MonoBehaviour {
 
 	public GameObject message;
 	public Text messageText;
+	public GameObject morseSender;
 	public GameObject morseSenderButton;
 	public float sendTimer = 5f;
 	public bool sending = false;
@@ -23,13 +24,16 @@ public class MorseReceiverController : MonoBehaviour {
 	Vector3 sendStartPos;
 	float animTimer = 0f;
 	float messageStart;
+	AudioSource receiver;
+	AudioSource sender;
 
 	void Start () {
 		notepadR = notepad.GetComponent<SpriteRenderer>();
 		messageStart = message.transform.position.x;
 		sendStartPos = morseSenderButton.transform.position;
+		receiver = gameObject.GetComponent<AudioSource>();
+		sender = morseSender.GetComponent<AudioSource>();
 		ReceiveMessage("Agente, nossos espiões descobriram que uma mensagem oculta será transmitida às 16:30 hrs em pleno programa de músicas na rádio local, frequência 102.6 MHz", true);
-		
 	}
 	
 	// Update is called once per frame
@@ -79,9 +83,11 @@ public class MorseReceiverController : MonoBehaviour {
 	public void SendMsg(string msg){
 		sending = true;
 		sendMsg = msg;
+		sender.Play();
 	}
 
 	public void ReceiveMessage(string msg, bool note=false){
+		receiver.Play();
 		cleaning = false;
 		message.transform.position = new Vector3(messageStart,message.transform.position.y,message.transform.position.z);
 		messageText.text = msg;
