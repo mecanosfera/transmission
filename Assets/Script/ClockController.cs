@@ -68,6 +68,9 @@ public class ClockController : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
+		if(!radio.messageStation.messagePlaying){
+			
+		}
 		ClockController.timeJump = true;
 		if(radio.on){
 			radio.Stop();
