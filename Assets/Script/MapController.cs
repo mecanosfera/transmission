@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapController : MonoBehaviour {
 
@@ -10,8 +11,11 @@ public class MapController : MonoBehaviour {
 	public bool secondMsg = false;
 	public MorseReceiverController morse;
 	BoxCollider2D box;
+	public Text coords;
+
 	void Start () {
 		box = gameObject.GetComponent<BoxCollider2D>();
+		coords.text = "";
 	}
 	
 	// Update is called once per frame

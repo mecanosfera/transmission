@@ -38,5 +38,17 @@ public class TargetController : MonoBehaviour {
 		}
 	}
 
+	void OnMouseOver(){
+		if(RadioController.allowMap){
+			map.coords.text = x+","+y;
+		}
+	}
+
+	void OnMouseExit(){
+		if(RadioController.allowMap){
+			map.coords.text = "";
+		}
+	}
+
 
 }

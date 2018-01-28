@@ -19,6 +19,7 @@ public class RadioController : MonoBehaviour {
 	public static AudioClip message;
 	public static bool transmitedMessage = false;
 	public StationController messageStation;
+	public static RadioController instance;
 	
 
 	void Start () {
@@ -30,14 +31,14 @@ public class RadioController : MonoBehaviour {
 		}
 		currentStation = null; //stations[0].GetComponent<StationController>();
 		noiseSource = gameObject.GetComponent<AudioSource>();
-		
+		instance = this;
 		
 		//currentStation.Play();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		messageStation.Message(false,false);
+		messageStation.Message();
 	}
 
 	public bool ChangeStation(StationController station){
